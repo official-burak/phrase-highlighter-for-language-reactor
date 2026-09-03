@@ -1,0 +1,384 @@
+/* Docked sidebar + LR toolbar icon. Do not wrap .lln-word. */
+
+:root {
+  --lrph-accent: #facc15;
+  --lrph-logo-purple: #3f0397;
+  --lrph-sidebar-w: 20rem;
+  --lrph-sidebar-top: 0px;
+  --lrph-dock-max-h: 100vh;
+}
+
+html.lrph-dock {
+  box-sizing: border-box;
+  margin-right: var(--lrph-sidebar-w, 20rem);
+  overflow-x: hidden;
+}
+
+html.lrph-dock body {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+
+/*
+ * LR hover hold: default is disarmed (no html.lrph-hover-armed). Hosts AND
+ * descendants get pointer-events none so LR's pointer-events:auto on .lln-word
+ * and the sentence star cannot receive hover before a real mouse move.
+ * Injected at document_start. Does not include .video-subs-wrap-overvideo
+ * (that wrap contains the YouTube iframe). Sidebar and .main-toolbar stay live.
+ */
+html:not(.lrph-hover-armed) :is(
+  #lln-subs,
+  .lln-subs,
+  #lln-main-subs,
+  #lln-subs-content,
+  .lln-subs-wrap,
+  #lln-subs-container,
+  #lln-bottom-panel,
+  .lln-bottom-panel,
+  .bottom-panel,
+  .sentence-wrap-main,
+  #lln-translations,
+  .lln-whole-title-translation,
+  .lln-whole-title-translation-wrap,
+  .translationText,
+  .main-translation-wrap,
+  #lln-vv-translations,
+  .svx-trans-horiz,
+  .svx-trans-vert,
+  .svx-row,
+  .sentence-wrap,
+  .sentence-row,
+  .sentence-view,
+  .lln-sentence-wrap,
+  .svx-sentence-wrap,
+  .lln-word,
+  .lln-hover-tooltip,
+  .dc-orig,
+  .dc-hover,
+  .dc-layer,
+  .lri-MediaPlayer_TEXT-wrap,
+  .lri-MediaPlayer_PODCAST-wrap,
+  .lri-SubsView-wrap,
+  .lri-VideoView-wrap,
+  .lri-VideoView-wrap2,
+  .lri-VideoView-wrap3,
+  .video-subs-wrap
+),
+html:not(.lrph-hover-armed) :is(
+  #lln-subs,
+  .lln-subs,
+  #lln-main-subs,
+  #lln-subs-content,
+  .lln-subs-wrap,
+  #lln-subs-container,
+  #lln-bottom-panel,
+  .lln-bottom-panel,
+  .bottom-panel,
+  .sentence-wrap-main,
+  #lln-translations,
+  .lln-whole-title-translation,
+  .lln-whole-title-translation-wrap,
+  .translationText,
+  .main-translation-wrap,
+  #lln-vv-translations,
+  .svx-trans-horiz,
+  .svx-trans-vert,
+  .svx-row,
+  .sentence-wrap,
+  .sentence-row,
+  .sentence-view,
+  .lln-sentence-wrap,
+  .svx-sentence-wrap,
+  .lln-word,
+  .lln-hover-tooltip,
+  .dc-orig,
+  .dc-hover,
+  .dc-layer,
+  .lri-MediaPlayer_TEXT-wrap,
+  .lri-MediaPlayer_PODCAST-wrap,
+  .lri-SubsView-wrap,
+  .lri-VideoView-wrap,
+  .lri-VideoView-wrap2,
+  .lri-VideoView-wrap3,
+  .video-subs-wrap
+) *,
+html:not(.lrph-hover-armed) :is(
+  .lln-save,
+  .lln-save-btn,
+  .lln-save-cue,
+  [class*="save-cue"],
+  [class*="SaveCue"],
+  [class*="saveCue"],
+  [class*="SavedCue"],
+  [class*="saved-cue"],
+  svg[data-testid*="Star" i],
+  svg[data-testid*="Bookmark" i],
+  [data-testid="StarIcon"],
+  [data-testid="StarBorderIcon"],
+  [data-testid="StarRateIcon"],
+  button[aria-label*="Save subtitle" i],
+  button[aria-label*="Save phrase" i],
+  button[aria-label*="Save sentence" i],
+  button[aria-label*="Save current" i],
+  button[title*="Save subtitle" i],
+  button[title*="Save phrase" i],
+  button[aria-label*="Kaydet" i],
+  button[aria-label*="kaydet" i],
+  button[title*="Kaydet" i],
+  button[aria-label*="ifade" i],
+  button[title*="ifade" i]
+),
+html:not(.lrph-hover-armed) :is(
+  .lln-save,
+  .lln-save-btn,
+  .lln-save-cue,
+  [class*="save-cue"],
+  [class*="SaveCue"],
+  [class*="saveCue"],
+  [class*="SavedCue"],
+  [class*="saved-cue"],
+  svg[data-testid*="Star" i],
+  svg[data-testid*="Bookmark" i],
+  [data-testid="StarIcon"],
+  [data-testid="StarBorderIcon"],
+  [data-testid="StarRateIcon"],
+  button[aria-label*="Save subtitle" i],
+  button[aria-label*="Save phrase" i],
+  button[aria-label*="Save sentence" i],
+  button[aria-label*="Save current" i],
+  button[title*="Save subtitle" i],
+  button[title*="Save phrase" i],
+  button[aria-label*="Kaydet" i],
+  button[aria-label*="kaydet" i],
+  button[title*="Kaydet" i],
+  button[aria-label*="ifade" i],
+  button[title*="ifade" i]
+) * {
+  pointer-events: none !important;
+}
+
+/* Same size/spacing as LR's MuiIconButton size=small in .main-toolbar. */
+.lrph-toolbar-btn,
+.lrph-toolbar-btn:hover,
+.lrph-toolbar-btn:active,
+.lrph-toolbar-btn:focus,
+.lrph-toolbar-btn:focus-visible {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 34px;
+  height: 34px;
+  margin: 0 8px 0 0;
+  padding: 5px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  line-height: 0;
+  outline: none;
+  transform: none;
+  user-select: none;
+  pointer-events: auto;
+}
+
+/* Off: idle gray like neighboring LR tools. Preference false. Still clickable. */
+.lrph-toolbar-btn {
+  filter: grayscale(1);
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+.lrph-toolbar-btn:hover,
+.lrph-toolbar-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.95);
+  opacity: 0.85;
+}
+
+/* On: full-color logo + selected purple fill/ring. Preference, not dock mount. */
+.lrph-toolbar-btn.is-on,
+.lrph-toolbar-btn.is-on:hover,
+.lrph-toolbar-btn.is-on:active,
+.lrph-toolbar-btn.is-on:focus,
+.lrph-toolbar-btn.is-on:focus-visible {
+  filter: none;
+  opacity: 1;
+  background: rgba(63, 3, 151, 0.55);
+  color: #fff;
+  box-shadow: 0 0 0 1px var(--lrph-logo-purple, #3f0397);
+}
+
+.lrph-toolbar-btn.is-on:hover,
+.lrph-toolbar-btn.is-on:focus-visible {
+  background: rgba(63, 3, 151, 0.7);
+}
+
+.lrph-toolbar-btn .lrph-glosses-icon,
+.lrph-toolbar-btn img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  border-radius: 4px;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.lrph-glosses {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: auto;
+  bottom: 0;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  box-sizing: border-box;
+  width: var(--lrph-sidebar-w, 20rem);
+  max-width: 42vw;
+  height: 100%;
+  max-height: var(--lrph-dock-max-h);
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  padding-top: 0;
+  background: #160c28;
+  border: 0;
+  border-left: 1px solid rgba(250, 204, 21, 0.18);
+  border-radius: 0;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.28);
+  pointer-events: auto;
+  text-align: left;
+  font-family: inherit;
+  line-height: 1.3;
+  overflow: hidden;
+  transform: translateX(0);
+}
+
+.lrph-glosses[data-lrph-fresh] {
+  animation: lrph-dock-in 180ms ease-out;
+}
+
+@keyframes lrph-dock-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.lrph-glosses-list {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  max-height: var(--lrph-dock-max-h);
+  margin: 0;
+  padding: 8px;
+  background: transparent;
+  border-radius: 0;
+  pointer-events: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(240, 235, 248, 0.34) transparent;
+}
+
+.lrph-glosses-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lrph-glosses-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lrph-glosses-list::-webkit-scrollbar-thumb {
+  background: rgba(240, 235, 248, 0.34);
+  border-radius: 4px;
+}
+
+.lrph-glosses-list.is-empty {
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.lrph-glosses-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  pointer-events: none;
+}
+
+.lrph-glosses-empty-icon,
+.lrph-glosses-empty img {
+  width: 80px;
+  height: 80px;
+  display: block;
+  border-radius: 16px;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.lrph-glosses-item {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.06em;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 8px 10px 9px;
+  background: rgba(63, 3, 151, 0.90);
+  border-radius: 8px;
+}
+
+.lrph-glosses-phrase {
+  color: var(--lrph-accent, #facc15);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.lrph-glosses-meanings {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.lrph-glosses-sense {
+  display: block;
+  margin: 0;
+  padding: 0 0 0 8px;
+  border-left: 2px solid color-mix(in srgb, var(--lrph-accent, #facc15) 58%, transparent);
+  color: rgba(240, 235, 248, 0.94);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.25;
+}
