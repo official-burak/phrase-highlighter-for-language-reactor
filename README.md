@@ -31,6 +31,8 @@ After an update, reload the extension on that page, then refresh the languagerea
 4. Click the Phrase Highlighter icon on Language Reactor's toolbar. Color means the sidebar is open. Gray means it is closed, but you can still click it. Chrome remembers your choice.
 5. Read the phrase cards for the current line. If that line has no phrases, the sidebar stays open and shows the extension logo until phrases appear.
 
+On a lesson with a mouse, cue hover stays off until you actually move the pointer. Touch and coarse pointers skip that lock so Language Reactor controls stay tappable. Saving a phrase is blocked only for write requests on watch pages. Opening Saved Phrases still loads the list.
+
 ## If the icon is missing
 
 **Why don't I see it on YouTube.com?**
