@@ -1,0 +1,27 @@
+{
+  "name": "phrase-highlighter-for-language-reactor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Companion for Language Reactor: shows meaning cards for the current line on languagereactor.com.",
+  "author": "Burak Keskin <official.burak@icloud.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/official-burak/phrase-highlighter-for-language-reactor",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/official-burak/phrase-highlighter-for-language-reactor.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc --noEmit && node scripts/build.mjs",
+    "test": "node test/unit.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.24",
+    "esbuild": "^0.25.9",
+    "typescript": "^5.9.2"
+  }
+}
